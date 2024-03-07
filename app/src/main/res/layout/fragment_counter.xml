@@ -6,26 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".view.FragmentCounter">
 
-
     <TextView
-        android:id="@+id/viewmodel_counter"
+        android:id="@+id/fragment_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_16"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_counter"
+        app:layout_constraintBottom_toTopOf="@+id/viewmodel_counter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="TextView" />
+        tools:text="@string/vm_text" />
 
     <TextView
-        android:id="@+id/fragment_counter"
+        android:id="@+id/viewmodel_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="TextView" />
+        tools:text="@string/fragment_text" />
 
     <Button
         android:id="@+id/increase_button"
@@ -40,11 +39,12 @@
     <Switch
         android:id="@+id/switch_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_16"
+        android:layout_height="@dimen/dp_64"
+        android:textSize="@dimen/sp_20"
         android:text="@string/switch_button"
         android:layout_marginEnd="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

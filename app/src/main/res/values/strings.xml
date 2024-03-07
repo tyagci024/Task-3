@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="increase_button">Arttır</string>
     <string name="switch_button">viewmodel on/off</string>
+    <string name="vm_text">0</string>
+    <string name="fragment_text">0</string>
 </resources>

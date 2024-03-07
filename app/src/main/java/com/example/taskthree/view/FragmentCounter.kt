@@ -10,16 +10,14 @@ import androidx.lifecycle.Observer
 import com.example.taskthree.R
 import com.example.taskthree.databinding.FragmentCounterBinding
 import com.example.taskthree.viewmodel.CounterViewModel
+import kotlin.properties.Delegates
 
 
 class FragmentCounter : Fragment() {
-    private var counter : Int=0
-    private lateinit var binding : FragmentCounterBinding
+    private var counter: Int = 0
+    private lateinit var binding: FragmentCounterBinding
     private val viewModel: CounterViewModel by viewModels()
     private lateinit var counterObserver: Observer<Int>
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,35 +27,29 @@ class FragmentCounter : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        binding = FragmentCounterBinding.inflate(inflater,container,false)
-        counterObserver = Observer { counter ->
-            binding.viewmodelCounter.text = counter.toString()
-        }
-
-
-
+        binding = FragmentCounterBinding.inflate(inflater, container, false)
+        binding.fragmentCounter.text = counter.toString()
         binding.increaseButton.setOnClickListener {
+
             if (binding.switchButton.isChecked) {
+                increaseCounter()
+            } else {
                 viewModel.incrementCounter()
             }
-            else {
-                increaseCounter()
-                binding.fragmentCounter.text=counter.toString()
-
-            }
         }
 
 
-        viewModel.getCounter().observe(viewLifecycleOwner, counterObserver)
+        viewModel.getCounter().observe(viewLifecycleOwner, Observer { it ->
+            binding.viewmodelCounter.text = it.toString()
+        })
 
         return binding.root
     }
-
-    fun increaseCounter(){
+    private fun increaseCounter() {
         counter++
+        binding.fragmentCounter.text = counter.toString()
     }
-
 
 }
