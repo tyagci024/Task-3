@@ -37,7 +37,7 @@ class GuessFragment : Fragment() {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
             }
             else if (it == "Kazandın!")
-            binding.textViewGuessHint.text="$it ${viewModel.randomCharObs}"
+            binding.textViewGuessHint.text="$it Doğru Cevap : ${viewModel.randomIntObs.value.toString()}"
         })
 
         return binding.root
