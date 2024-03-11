@@ -7,21 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.taskthree.R
+import androidx.navigation.fragment.findNavController
 import com.example.taskthree.databinding.FragmentCounterBinding
 import com.example.taskthree.viewmodel.CounterViewModel
-import kotlin.properties.Delegates
 
+class CounterFragment : Fragment() {
 
-class FragmentCounter : Fragment() {
     private var counter: Int = 0
     private lateinit var binding: FragmentCounterBinding
     private val viewModel: CounterViewModel by viewModels()
-    private lateinit var counterObserver: Observer<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -30,8 +27,8 @@ class FragmentCounter : Fragment() {
     ): View {
 
         binding = FragmentCounterBinding.inflate(inflater, container, false)
-        binding.fragmentCounter.text = counter.toString()
-        binding.increaseButton.setOnClickListener {
+        binding.textviewFragmentCounter.text = counter.toString()
+        binding.buttonIncrease.setOnClickListener {
 
             if (binding.switchButton.isChecked) {
                 increaseCounter()
@@ -40,16 +37,22 @@ class FragmentCounter : Fragment() {
             }
         }
 
-
-        viewModel.getCounter().observe(viewLifecycleOwner, Observer { it ->
-            binding.viewmodelCounter.text = it.toString()
+        viewModel.counterOberser.observe(viewLifecycleOwner, Observer { it ->
+            binding.textviewViewmodelCounter.text = it.toString()
         })
+        binding.buttonToGuessFragment.setOnClickListener {
+            navigateToGuess()
+        }
 
         return binding.root
     }
+
     private fun increaseCounter() {
         counter++
-        binding.fragmentCounter.text = counter.toString()
+        binding.textviewFragmentCounter.text = counter.toString()
     }
 
+    fun navigateToGuess(){
+        findNavController().navigate(CounterFragmentDirections.toFragmentGuess())
+    }
 }

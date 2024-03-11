@@ -5,14 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CounterViewModel : ViewModel() {
-    private var counter = MutableLiveData<Int>()
+
+    private val counter = MutableLiveData<Int>()
+    val counterOberser: LiveData<Int>
+        get() = counter
 
     init {
         counter.value = 0
-    }
-
-    fun getCounter(): LiveData<Int> {
-        return counter
     }
 
     fun incrementCounter() {
