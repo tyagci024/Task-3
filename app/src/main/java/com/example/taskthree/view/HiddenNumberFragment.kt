@@ -23,7 +23,7 @@ class HiddenNumberFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHiddenNumberBinding.inflate(inflater, container, false)
-        binding.textViewHiddenNumber.text = "Tahmin edilmesi gerekilen sayı "+viewModel.randomIntObs.value.toString()
+        binding.textViewHiddenNumber.text = StringBuilder("Tahmin edilmesi gerekilen sayı "+viewModel.randomIntObs.value.toString())
 
         return binding.root
     }

@@ -1,5 +1,6 @@
 package com.example.taskthree.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ class GuessFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +39,8 @@ class GuessFragment : Fragment() {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
             }
             else if (it == "Kazandın!")
-            binding.textViewGuessHint.text="$it Doğru Cevap : ${viewModel.randomIntObs.value.toString()}"
+            binding.textViewGuessHint.text=StringBuilder().append( "$it Doğru Cevap : ${viewModel.randomIntObs.value.toString()}")
+
         })
 
         return binding.root
