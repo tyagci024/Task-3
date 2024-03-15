@@ -7,7 +7,25 @@
 
     <fragment
         android:id="@+id/fragmentCounter"
-        android:name="com.example.taskthree.view.FragmentCounter"
+        android:name="com.example.taskthree.view.CounterFragment"
         android:label="fragment_counter"
-        tools:layout="@layout/fragment_counter" />
+        tools:layout="@layout/fragment_counter" >
+        <action
+            android:id="@+id/to_fragmentGuess"
+            app:destination="@id/fragmentGuess" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGuess"
+        android:name="com.example.taskthree.view.GuessFragment"
+        android:label="fragment_char"
+        tools:layout="@layout/fragment_char" >
+        <action
+            android:id="@+id/to_hiddenNumberFragment"
+            app:destination="@id/hiddenNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hiddenNumberFragment"
+        android:name="com.example.taskthree.view.HiddenNumberFragment"
+        android:label="fragment_hidden_number"
+        tools:layout="@layout/fragment_hidden_number" />
 </navigation>

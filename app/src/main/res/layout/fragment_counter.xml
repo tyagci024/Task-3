@@ -4,47 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FragmentCounter">
-
+    tools:context=".view.CounterFragment">
 
     <TextView
-        android:id="@+id/viewmodel_counter"
+        android:id="@+id/textviewFragmentCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_16"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_counter"
+        app:layout_constraintBottom_toTopOf="@+id/textviewViewmodelCounter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="TextView" />
+        tools:text="@string/vm_text" />
 
     <TextView
-        android:id="@+id/fragment_counter"
+        android:id="@+id/textviewViewmodelCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="TextView" />
+        tools:text="@string/fragment_text" />
 
     <Button
-        android:id="@+id/increase_button"
+        android:id="@+id/buttonIncrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_64"
         android:text="@string/increase_button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/dp_32"
+        app:layout_constraintBottom_toTopOf="@+id/buttonToGuessFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
-        android:id="@+id/switch_button"
+        android:id="@+id/switchButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_16"
-        android:text="@string/switch_button"
-        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_height="@dimen/dp_64"
         android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:text="@string/switch_button"
+        android:textSize="@dimen/sp_20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonToGuessFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:text="@string/g_task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
