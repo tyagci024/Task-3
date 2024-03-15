@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.taskthree.databinding.FragmentCounterBinding
 import com.example.taskthree.viewmodel.CounterViewModel
@@ -35,10 +34,9 @@ class CounterFragment : Fragment() {
             }
         }
 
-        viewModel.counterOberser.observe(
-            viewLifecycleOwner, Observer { it ->
-            binding.textviewViewmodelCounter.text = it.toString()
-        })
+        viewModel.counterOberser.observe(viewLifecycleOwner) { counter ->
+            binding.textviewViewmodelCounter.text = counter.toString()
+        }
         binding.buttonToGuessFragment.setOnClickListener {
             navigateToGuess()
         }

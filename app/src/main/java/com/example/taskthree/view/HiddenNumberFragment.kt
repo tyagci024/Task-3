@@ -23,8 +23,11 @@ class HiddenNumberFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHiddenNumberBinding.inflate(inflater, container, false)
-        binding.textViewHiddenNumber.text = StringBuilder("Tahmin edilmesi gerekilen sayı "+viewModel.randomIntObs.value.toString())
+        binding.textViewHiddenNumber.text = StringBuilder(GUESS_NUMBER_MESSAGE+viewModel.randomIntObs.value.toString())
 
         return binding.root
+    }
+    companion object{
+        private const val GUESS_NUMBER_MESSAGE = "Tahmin edilmesi gerekilen sayı "
     }
 }

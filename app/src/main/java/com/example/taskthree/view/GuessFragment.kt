@@ -27,14 +27,12 @@ class GuessFragment : Fragment() {
         binding = FragmentCharBinding.inflate(inflater, container, false)
         buttonConnectEditText()
 
-        viewModel.resultMessageObs.observe(
-            viewLifecycleOwner) {
-            if (it == "Tekrar dene!") {
+        viewModel.resultMessageObs.observe(viewLifecycleOwner) {
+            if (it == TRY_AGAIN_MESSAGE) {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
-            } else if (it == "Kazandın!"){
+            } else if (it == WIN_MESSAGE){
                 binding.textViewGuessHint.text=
-                    StringBuilder().append(
-                    "$it Doğru Cevap : ${viewModel.randomIntObs.value.toString()}")
+                    StringBuilder().append(GUESS_CHARACTER_HINT+ viewModel.randomIntObs.value.toString())
             }
         }
 
@@ -52,7 +50,7 @@ class GuessFragment : Fragment() {
                 if (guessText.isNotEmpty()) {
                     viewModel.checkGuess(guessText)
                 } else {
-                    Toast.makeText(requireContext(), "Karakter girin!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), ENTER_CHARACTER_MESSAGE, Toast.LENGTH_SHORT).show()
                 }
             }
             button0.setOnClickListener {
@@ -101,5 +99,11 @@ class GuessFragment : Fragment() {
                 editTextGuess.text.clear()
             }
         }
+    }
+    companion object {
+        private const val TRY_AGAIN_MESSAGE = "Tekrar dene!"
+        private const val WIN_MESSAGE = "Kazandın!"
+        private const val GUESS_CHARACTER_HINT = "Doğru Cevap : "
+        private const val ENTER_CHARACTER_MESSAGE = "Karakter girin!!"
     }
 }
