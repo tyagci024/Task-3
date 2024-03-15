@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GuessViewModel : ViewModel() {
-
     private var secretChar: Char = ' '
     private var secretInt = 0
     private var randomInt=MutableLiveData<Int>()
@@ -27,7 +26,7 @@ class GuessViewModel : ViewModel() {
     fun startNewGame() {
         secretInt = (0..9).random()
         secretChar = ('a'..'z').random()
-        randomInt.value=secretInt
+        randomInt.value = secretInt
     }
 
     fun checkGuess(guess: String) {
@@ -37,5 +36,4 @@ class GuessViewModel : ViewModel() {
             resultMessage.value = "Tekrar dene!"
         }
     }
-
 }

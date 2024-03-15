@@ -10,17 +10,17 @@ import com.example.taskthree.databinding.FragmentHiddenNumberBinding
 import com.example.taskthree.viewmodel.GuessViewModel
 
 class HiddenNumberFragment : Fragment() {
-
     private val viewModel: GuessViewModel by activityViewModels()
-    private lateinit var binding :FragmentHiddenNumberBinding
+    private lateinit var binding: FragmentHiddenNumberBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHiddenNumberBinding.inflate(inflater, container, false)
         binding.textViewHiddenNumber.text = StringBuilder("Tahmin edilmesi gerekilen sayı "+viewModel.randomIntObs.value.toString())

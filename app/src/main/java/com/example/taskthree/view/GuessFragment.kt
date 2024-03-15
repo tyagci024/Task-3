@@ -1,6 +1,5 @@
 package com.example.taskthree.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,40 +7,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.taskthree.databinding.FragmentCharBinding
 import com.example.taskthree.viewmodel.GuessViewModel
 
 class GuessFragment : Fragment() {
-
-    private lateinit var binding : FragmentCharBinding
+    private lateinit var binding: FragmentCharBinding
     private val viewModel: GuessViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
-
-        binding = FragmentCharBinding.inflate(inflater,container,false)
+        binding = FragmentCharBinding.inflate(inflater, container, false)
         buttonConnectEditText()
-        binding.editTextGuess.setOnTouchListener { v, event ->
-            true
-        }
 
-        viewModel.resultMessageObs.observe(viewLifecycleOwner, Observer {
+        viewModel.resultMessageObs.observe(
+            viewLifecycleOwner) {
             if (it == "Tekrar dene!") {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
+            } else if (it == "Kazandın!"){
+                binding.textViewGuessHint.text=
+                    StringBuilder().append(
+                    "$it Doğru Cevap : ${viewModel.randomIntObs.value.toString()}")
             }
-            else if (it == "Kazandın!")
-            binding.textViewGuessHint.text=StringBuilder().append( "$it Doğru Cevap : ${viewModel.randomIntObs.value.toString()}")
-
-        })
+        }
 
         return binding.root
     }
@@ -105,8 +100,6 @@ class GuessFragment : Fragment() {
             buttonClear.setOnClickListener {
                 editTextGuess.text.clear()
             }
-
         }
     }
-
 }

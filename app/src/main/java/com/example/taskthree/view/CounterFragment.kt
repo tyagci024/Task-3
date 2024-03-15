@@ -12,7 +12,6 @@ import com.example.taskthree.databinding.FragmentCounterBinding
 import com.example.taskthree.viewmodel.CounterViewModel
 
 class CounterFragment : Fragment() {
-
     private var counter: Int = 0
     private lateinit var binding: FragmentCounterBinding
     private val viewModel: CounterViewModel by viewModels()
@@ -22,14 +21,13 @@ class CounterFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
-
         binding = FragmentCounterBinding.inflate(inflater, container, false)
         binding.textviewFragmentCounter.text = counter.toString()
         binding.buttonIncrease.setOnClickListener {
-
             if (binding.switchButton.isChecked) {
                 increaseCounter()
             } else {
@@ -37,7 +35,8 @@ class CounterFragment : Fragment() {
             }
         }
 
-        viewModel.counterOberser.observe(viewLifecycleOwner, Observer { it ->
+        viewModel.counterOberser.observe(
+            viewLifecycleOwner, Observer { it ->
             binding.textviewViewmodelCounter.text = it.toString()
         })
         binding.buttonToGuessFragment.setOnClickListener {
