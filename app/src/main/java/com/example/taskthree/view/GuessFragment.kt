@@ -27,12 +27,12 @@ class GuessFragment : Fragment() {
         binding = FragmentCharBinding.inflate(inflater, container, false)
         buttonConnectEditText()
 
-        viewModel.resultMessageObs.observe(viewLifecycleOwner) {
-            if (it == TRY_AGAIN_MESSAGE) {
+        viewModel.resultMessageObs.observe(viewLifecycleOwner) { message ->
+            if (message == TRY_AGAIN_MESSAGE) {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
-            } else if (it == WIN_MESSAGE){
-                binding.textViewGuessHint.text=
-                    StringBuilder().append(GUESS_CHARACTER_HINT+ viewModel.randomIntObs.value.toString())
+            } else if (message == WIN_MESSAGE) {
+                binding.textViewGuessHint.text =
+                    StringBuilder().append(GUESS_CHARACTER_HINT + viewModel.randomIntObs.value.toString())
             }
         }
 

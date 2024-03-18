@@ -5,15 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GuessViewModel : ViewModel() {
-    private var secretChar: Char = ' '
-    private var secretInt = 0
-    private var randomInt=MutableLiveData<Int>()
+    private var secretLetter: Char = ' '
+    private var secretNumber = 0
+    private var randomInt = MutableLiveData<Int>()
 
-    val randomIntObs : LiveData<Int>
-        get()=randomInt
+    val randomIntObs: LiveData<Int>
+        get() = randomInt
 
     val randomCharObs: Char
-        get() = secretChar
+        get() = secretLetter
 
     private val resultMessage = MutableLiveData<String>()
     val resultMessageObs: LiveData<String>
@@ -24,16 +24,21 @@ class GuessViewModel : ViewModel() {
     }
 
     fun startNewGame() {
-        secretInt = (0..9).random()
-        secretChar = ('a'..'z').random()
-        randomInt.value = secretInt
+        secretNumber = (0..9).random()
+        secretLetter = ('a'..'z').random()
+        randomInt.value = secretNumber
     }
 
     fun checkGuess(guess: String) {
-        if (guess.toInt() == secretInt) {
-            resultMessage.value = "Kazandın!"
+        if (guess.toInt() == secretNumber) {
+            resultMessage.value = TRY_AGAIN_MESSAGE
         } else {
-            resultMessage.value = "Tekrar dene!"
+            resultMessage.value = WIN_MESSAGE
         }
+    }
+
+    companion object {
+        private const val TRY_AGAIN_MESSAGE = "Tekrar dene!"
+        private const val WIN_MESSAGE = "Kazandın!"
     }
 }
