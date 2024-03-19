@@ -7,24 +7,16 @@
     tools:context=".view.CounterFragment">
 
     <TextView
-        android:id="@+id/textviewFragmentCounter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_16"
-        app:layout_constraintBottom_toTopOf="@+id/textviewViewmodelCounter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="@string/vm_text" />
-
-    <TextView
-        android:id="@+id/textviewViewmodelCounter"
+        android:id="@+id/textviewCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/fragment_text" />
+        tools:text="@string/vm_text" />
 
     <Button
         android:id="@+id/buttonIncrease"

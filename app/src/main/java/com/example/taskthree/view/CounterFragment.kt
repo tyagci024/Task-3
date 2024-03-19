@@ -30,7 +30,7 @@ class CounterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textviewFragmentCounter.text = counter.toString()
+        binding.textviewCounter.text = counter.toString()
         binding.buttonIncrease.setOnClickListener {
             if (binding.switchButton.isChecked) {
                 increaseCounter()
@@ -40,7 +40,7 @@ class CounterFragment : Fragment() {
         }
 
         viewModel.counterObserver.observe(viewLifecycleOwner) { counter ->
-            binding.textviewViewmodelCounter.text = counter.toString()
+            binding.textviewCounter.text = counter.toString()
         }
         binding.buttonToGuessFragment.setOnClickListener {
             navigateToGuess()
@@ -49,7 +49,7 @@ class CounterFragment : Fragment() {
 
     private fun increaseCounter() {
         counter++
-        binding.textviewFragmentCounter.text = counter.toString()
+        binding.textviewCounter.text = counter.toString()
     }
 
     private fun navigateToGuess(){
