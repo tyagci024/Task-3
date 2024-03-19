@@ -25,8 +25,12 @@ class GuessFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentCharBinding.inflate(inflater, container, false)
-        buttonConnectEditText()
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        buttonConnectEditText()
         viewModel.resultMessageObs.observe(viewLifecycleOwner) { message ->
             if (message == TRY_AGAIN_MESSAGE) {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
@@ -35,8 +39,6 @@ class GuessFragment : Fragment() {
                     StringBuilder().append(GUESS_CHARACTER_HINT + viewModel.randomIntObs.value.toString())
             }
         }
-
-        return binding.root
     }
 
     fun buttonConnectEditText() {

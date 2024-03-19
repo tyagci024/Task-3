@@ -25,6 +25,11 @@ class CounterFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentCounterBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.textviewFragmentCounter.text = counter.toString()
         binding.buttonIncrease.setOnClickListener {
             if (binding.switchButton.isChecked) {
@@ -40,8 +45,6 @@ class CounterFragment : Fragment() {
         binding.buttonToGuessFragment.setOnClickListener {
             navigateToGuess()
         }
-
-        return binding.root
     }
 
     private fun increaseCounter() {
