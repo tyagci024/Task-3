@@ -5,15 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CounterViewModel : ViewModel() {
-    private val counter = MutableLiveData<Int>()
-    val counterOberser: LiveData<Int>
+    private val counter = MutableLiveData<Int>(0)
+    val counterObserver: LiveData<Int>
         get() = counter
-
-    init {
-        counter.value = 0
-    }
-
     fun incrementCounter() {
-        counter.value = (counter.value ?: 0) + 1
+        counter.value = counter.value?.plus(1)
     }
 }
