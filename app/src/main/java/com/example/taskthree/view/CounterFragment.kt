@@ -34,7 +34,7 @@ class CounterFragment : Fragment() {
             }
         }
 
-        viewModel.counterOberser.observe(viewLifecycleOwner) { counter ->
+        viewModel.counterObserver.observe(viewLifecycleOwner) { counter ->
             binding.textviewViewmodelCounter.text = counter.toString()
         }
         binding.buttonToGuessFragment.setOnClickListener {
@@ -49,7 +49,7 @@ class CounterFragment : Fragment() {
         binding.textviewFragmentCounter.text = counter.toString()
     }
 
-    fun navigateToGuess(){
+    private fun navigateToGuess(){
         findNavController().navigate(CounterFragmentDirections.toFragmentGuess())
     }
 }
