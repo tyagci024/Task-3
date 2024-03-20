@@ -15,10 +15,6 @@ class GuessFragment : Fragment() {
     private lateinit var binding: FragmentCharBinding
     private val viewModel: GuessViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,10 +37,13 @@ class GuessFragment : Fragment() {
         }
     }
 
-    fun buttonConnectEditText() {
+    private fun buttonConnectEditText() {
         binding.apply {
             textViewGuessHint.setOnClickListener {
                 findNavController().navigate(GuessFragmentDirections.toHiddenNumberFragment())
+            }
+            buttonClear.setOnClickListener {
+                editTextGuess.text.clear()
             }
 
             buttonGuess.setOnClickListener {
@@ -52,53 +51,26 @@ class GuessFragment : Fragment() {
                 if (guessText.isNotEmpty()) {
                     viewModel.checkGuess(guessText)
                 } else {
-                    Toast.makeText(requireContext(), ENTER_CHARACTER_MESSAGE, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), ENTER_CHARACTER_MESSAGE, Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
-            button0.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button0.text)
-            }
-            button1.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button1.text)
-            }
-
-            button2.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button2.text)
-            }
-
-            button3.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button3.text)
-            }
-            button4.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button4.text)
-            }
-            button5.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button5.text)
-            }
-            button6.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button6.text)
-            }
-            button7.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button7.text)
-            }
-            button8.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button8.text)
-            }
-            button9.setOnClickListener {
-                editTextGuess.text.clear()
-                editTextGuess.append(button9.text)
-            }
-            buttonClear.setOnClickListener {
-                editTextGuess.text.clear()
+            val buttonList = arrayOf(
+                button0,
+                button1,
+                button2,
+                button3,
+                button4,
+                button5,
+                button6,
+                button7,
+                button8,
+                button9)
+            buttonList.forEach { button ->
+                button.setOnClickListener {
+                    binding.editTextGuess.text.clear()
+                    binding.editTextGuess.append(button.text)
+                }
             }
         }
     }
