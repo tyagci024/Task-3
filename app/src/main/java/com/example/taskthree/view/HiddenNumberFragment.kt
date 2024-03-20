@@ -13,10 +13,6 @@ class HiddenNumberFragment : Fragment() {
     private val viewModel: GuessViewModel by activityViewModels()
     private lateinit var binding: FragmentHiddenNumberBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
