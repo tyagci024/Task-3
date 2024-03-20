@@ -23,7 +23,7 @@ class GuessViewModel : ViewModel() {
         startNewGame()
     }
 
-    fun startNewGame() {
+    private fun startNewGame() {
         secretNumber = (0..9).random()
         secretLetter = ('a'..'z').random()
         randomInt.value = secretNumber
