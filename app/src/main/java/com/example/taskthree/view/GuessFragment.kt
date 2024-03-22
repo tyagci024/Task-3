@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.taskthree.R
 import com.example.taskthree.databinding.FragmentCharBinding
 import com.example.taskthree.viewmodel.GuessViewModel
 
@@ -28,11 +29,11 @@ class GuessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         buttonConnectEditText()
         viewModel.resultMessageObs.observe(viewLifecycleOwner) { message ->
-            if (message == TRY_AGAIN_MESSAGE) {
+            if (message == getString(R.string.try_again_message)) {
                 binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
-            } else if (message == WIN_MESSAGE) {
+            } else if (message == getString(R.string.win_message)) {
                 binding.textViewGuessHint.text =
-                    StringBuilder().append(GUESS_CHARACTER_HINT + viewModel.randomIntObs.value.toString())
+                    StringBuilder().append(getString(R.string.guess_character_hint, viewModel.randomIntObs.value))
             }
         }
     }
@@ -51,7 +52,7 @@ class GuessFragment : Fragment() {
                 if (guessText.isNotEmpty()) {
                     viewModel.checkGuess(guessText)
                 } else {
-                    Toast.makeText(requireContext(), ENTER_CHARACTER_MESSAGE, Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), getString(R.string.enter_character_message), Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -73,11 +74,5 @@ class GuessFragment : Fragment() {
                 }
             }
         }
-    }
-    companion object {
-        private const val TRY_AGAIN_MESSAGE = "Tekrar dene!"
-        private const val WIN_MESSAGE = "Kazandın!"
-        private const val GUESS_CHARACTER_HINT = "Doğru Cevap : "
-        private const val ENTER_CHARACTER_MESSAGE = "Karakter girin!!"
     }
 }
