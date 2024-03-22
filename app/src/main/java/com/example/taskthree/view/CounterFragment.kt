@@ -29,20 +29,26 @@ class CounterFragment : Fragment() {
         binding.textviewCounter.text = counter.toString()
         binding.buttonIncrease.setOnClickListener {
             if (binding.switchButton.isChecked) {
-                increaseCounter()
-            } else {
                 viewModel.incrementCounter()
+            } else {
+                increaseCounter()
             }
         }
 
-        viewModel.counterObserver.observe(viewLifecycleOwner) { counter ->
-            binding.textviewCounter.text = counter.toString()
-        }
-        binding.buttonToGuessFragment.setOnClickListener {
-            navigateToGuess()
+        binding.switchButton.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.textviewCounter.text = viewModel.counterObserver.value.toString()
+                viewModel.counterObserver.observe(viewLifecycleOwner) { counter ->
+                    binding.textviewCounter.text = counter.toString()
+                }
+            } else {
+                binding.textviewCounter.text = counter.toString()
+            }
+            binding.buttonToGuessFragment.setOnClickListener {
+                navigateToGuess()
+            }
         }
     }
-
     private fun increaseCounter() {
         counter++
         binding.textviewCounter.text = counter.toString()

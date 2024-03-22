@@ -30,7 +30,7 @@
         <EditText
             android:id="@+id/editTextGuess"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_0"
             android:layout_weight="1"
             android:hint="@string/text_view_hint"
             android:inputType="number" />
