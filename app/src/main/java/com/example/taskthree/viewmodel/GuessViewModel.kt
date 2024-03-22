@@ -31,9 +31,9 @@ class GuessViewModel : ViewModel() {
 
     fun checkGuess(guess: String) {
         if (guess.toInt() == secretNumber) {
-            resultMessage.value = TRY_AGAIN_MESSAGE
-        } else {
             resultMessage.value = WIN_MESSAGE
+        } else {
+            resultMessage.value = TRY_AGAIN_MESSAGE
         }
     }
 
