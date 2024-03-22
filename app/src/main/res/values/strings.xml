@@ -3,10 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="increase_button">Arttır</string>
-    <string name="switch_button">viewmodel on/off</string>
+    <string name="switch_button">viewmodel off/on</string>
     <string name="vm_text">0</string>
     <string name="fragment_text">0</string>
     <string name="text_view_hint">Enter your guess:</string>
+    <string name="try_again_message">Tekrar dene!</string>
+    <string name="win_message">Kazandın!</string>
+    <string name="guess_character_hint">Doğru Cevap: %1$d</string>
+    <string name="enter_character_message">Karakter girin!!</string>
     <string name="button_clear">Clear</string>
     <string name="button_guess">Guess</string>
     <string name="number_1">1</string>
