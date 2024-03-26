@@ -44,9 +44,9 @@ class CounterFragment : Fragment() {
             } else {
                 binding.textviewCounter.text = counter.toString()
             }
-            binding.buttonToGuessFragment.setOnClickListener {
-                navigateToGuess()
-            }
+        }
+        binding.buttonToGuessFragment.setOnClickListener {
+            navigateToGuess()
         }
     }
     private fun increaseCounter() {
