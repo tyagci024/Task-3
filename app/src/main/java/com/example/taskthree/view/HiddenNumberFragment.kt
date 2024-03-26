@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.taskthree.R
 import com.example.taskthree.databinding.FragmentHiddenNumberBinding
 import com.example.taskthree.viewmodel.GuessViewModel
 
@@ -24,9 +25,6 @@ class HiddenNumberFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewHiddenNumber.text = StringBuilder(GUESS_NUMBER_MESSAGE+viewModel.randomIntObs.value.toString())
-    }
-    companion object{
-        private const val GUESS_NUMBER_MESSAGE = "Tahmin edilmesi gerekilen sayı "
+        binding.textViewHiddenNumber.text = getString(R.string.gues_number_message, viewModel.randomIntObs.value)
     }
 }
