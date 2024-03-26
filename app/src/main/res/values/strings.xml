@@ -10,6 +10,7 @@
     <string name="try_again_message">Tekrar dene!</string>
     <string name="win_message">Kazandın!</string>
     <string name="guess_character_hint">Doğru Cevap: %1$d</string>
+    <string name="gues_number_message">Tahmin edilmesi gerekilen sayı %1$d</string>
     <string name="enter_character_message">Karakter girin!!</string>
     <string name="button_clear">Clear</string>
     <string name="button_guess">Guess</string>
@@ -24,4 +25,5 @@
     <string name="number_9">9</string>
     <string name="number_0">0</string>
     <string name="g_task">Guess Task</string>
+
 </resources>
