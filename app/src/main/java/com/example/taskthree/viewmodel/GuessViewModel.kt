@@ -16,8 +16,8 @@ class GuessViewModel : ViewModel() {
     val randomCharObs: LiveData<Char>
         get() = secretLetter
 
-    private val resultMessage = MutableLiveData<String>()
-    val resultMessageObs: LiveData<String>
+    private val resultMessage = MutableLiveData<GuessResult>()
+    val resultMessageObs: LiveData<GuessResult>
         get() = resultMessage
 
     init {
@@ -32,14 +32,9 @@ class GuessViewModel : ViewModel() {
 
     fun checkGuess(guess: String) {
         if (guess.toInt() == secretNumber) {
-            resultMessage.value = WIN_MESSAGE
+            resultMessage.value = GuessResult.WIN
         } else {
-            resultMessage.value = TRY_AGAIN_MESSAGE
+            resultMessage.value = GuessResult.TRY_AGAIN
         }
-    }
-
-    companion object {
-        private const val TRY_AGAIN_MESSAGE = "Tekrar dene!"
-        private const val WIN_MESSAGE = "Kazandın!"
     }
 }

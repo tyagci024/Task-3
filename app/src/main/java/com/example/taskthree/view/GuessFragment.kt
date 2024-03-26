@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.taskthree.R
 import com.example.taskthree.databinding.FragmentCharBinding
+import com.example.taskthree.state.GuessResult
 import com.example.taskthree.viewmodel.GuessViewModel
 
 class GuessFragment : Fragment() {
@@ -29,11 +30,10 @@ class GuessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         buttonConnectEditText()
         viewModel.resultMessageObs.observe(viewLifecycleOwner) { message ->
-            if (message == getString(R.string.try_again_message)) {
-                binding.textViewGuessHint.text = viewModel.randomCharObs.toString()
-            } else if (message == getString(R.string.win_message)) {
-                binding.textViewGuessHint.text =
-                    StringBuilder().append(getString(R.string.guess_character_hint, viewModel.randomIntObs.value))
+            if (message == GuessResult.TRY_AGAIN) {
+                binding.textViewGuessHint.text = viewModel.randomCharObs.value.toString()
+            } else if (message == GuessResult.WIN) {
+                binding.textViewGuessHint.text = getString(R.string.guess_character_hint, viewModel.randomIntObs.value)
             }
         }
         viewModel.randomCharObs.observe(viewLifecycleOwner){
