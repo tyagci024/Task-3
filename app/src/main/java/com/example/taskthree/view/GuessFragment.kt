@@ -36,8 +36,10 @@ class GuessFragment : Fragment() {
                     StringBuilder().append(getString(R.string.guess_character_hint, viewModel.randomIntObs.value))
             }
         }
+        viewModel.randomCharObs.observe(viewLifecycleOwner){
+            binding.textViewGuessHint.text=it.toString()
+        }
     }
-
     private fun buttonConnectEditText() {
         binding.apply {
             textViewGuessHint.setOnClickListener {
@@ -45,6 +47,7 @@ class GuessFragment : Fragment() {
             }
             buttonClear.setOnClickListener {
                 editTextGuess.text.clear()
+                viewModel.startNewGame()
             }
 
             buttonGuess.setOnClickListener {
